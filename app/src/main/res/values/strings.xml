@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">NavigationComponentDemo</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="today_fragment">Today Fragment</string>
+    <string name="detail">Detail</string>
+    <string name="tiger_biscuit">Tiger Biscuit</string>
+    <string name="buy">Buy</string>
+    <string name="price_rs_10">Price: RS 10</string>
+</resources>
