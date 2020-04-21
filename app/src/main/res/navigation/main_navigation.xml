@@ -48,5 +48,11 @@
         android:id="@+id/login_fragment"
         android:name="com.rumi.navigationcomponentdemo.LoginFragment"
         android:label="LoginFragment"
-        tools:layout="@layout/fragment_login"/>
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_fragment_to_todayFragment"
+            app:destination="@id/todayFragment"
+            app:popUpTo="@id/login_fragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
 </navigation>

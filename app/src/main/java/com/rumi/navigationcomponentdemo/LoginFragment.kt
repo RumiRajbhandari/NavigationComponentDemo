@@ -1,11 +1,12 @@
 package com.rumi.navigationcomponentdemo
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : Fragment() {
 
@@ -23,7 +24,8 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setHasOptionsMenu(false)
-
+        btn_login.setOnClickListener {
+            findNavController().navigate(R.id.action_login_fragment_to_todayFragment)
+        }
     }
 }
