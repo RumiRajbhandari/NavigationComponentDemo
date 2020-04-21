@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.evolve.rosiautils.PictureManager
 import com.evolve.rosiautils.TYPE_ERROR
 import com.evolve.rosiautils.TYPE_SUCCESS
@@ -34,6 +35,9 @@ class SkuDetailFragment : Fragment() {
                     openCamera()
                 }
             }
+        }
+        btn_logout.setOnClickListener {
+            findNavController().navigate(R.id.action_skuDetailFragment_to_loginFragment)
         }
     }
 

@@ -27,12 +27,20 @@ class TodayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn_detail.setOnClickListener {
-            findNavController().navigate(R.id.skuDetailFragment)
+            findNavController().navigate(R.id.action_todayFragment_to_skuDetailFragment)
         }
+
+//        findNavController().navigate(R.id.action_todayFragment_to_login_graph)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.overflow_menu, menu)
+    }
+
+    override fun onDestroy() {
+        println("on destroyed")
+        super.onDestroy()
     }
 }

@@ -9,7 +9,14 @@
         android:id="@+id/skuDetailFragment"
         android:name="com.rumi.navigationcomponentdemo.SkuDetailFragment"
         android:label="Sku Detail"
-        tools:layout="@layout/fragment_sku_detail" />
+        tools:layout="@layout/fragment_sku_detail" >
+        <action
+            android:id="@+id/action_skuDetailFragment_to_loginFragment"
+            app:destination="@id/login_fragment"
+            app:popUpTo="@id/todayFragment"
+            app:popUpToInclusive="true"
+            />
+    </fragment>
     <fragment
         android:id="@+id/todayFragment"
         android:name="com.rumi.navigationcomponentdemo.TodayFragment"
@@ -18,7 +25,12 @@
 
         <action
             android:id="@+id/action_todayFragment_to_skuDetailFragment"
-            app:destination="@id/skuDetailFragment" />
+            app:destination="@id/skuDetailFragment"/>
+        <action
+            android:id="@+id/action_todayFragment_to_login_graph"
+            app:destination="@id/login_fragment"
+            app:popUpTo="@id/main_navigation"
+            app:popUpToInclusive="true"/>
 
     </fragment>
     <fragment
@@ -26,4 +38,15 @@
         android:name="com.rumi.navigationcomponentdemo.SettingFragment"
         android:label="SettingFragment"
         tools:layout="@layout/fragment_setting"/>
+    <fragment
+        android:id="@+id/leave_request_fragment"
+        android:name="com.rumi.navigationcomponentdemo.LeaveRequestFragment"
+        android:label="LeaveRequestFragment"
+        tools:layout="@layout/fragment_leaverequest"/>
+
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="com.rumi.navigationcomponentdemo.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login"/>
 </navigation>
