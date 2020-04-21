@@ -68,7 +68,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.closeDrawer(GravityCompat.START)
         when (menu.itemId) {
             R.id.today_fragment -> {
-                navController.navigate(R.id.today_fragment)
+                navController.popBackStack()
+                navController.navigate(R.id.todayFragment)
             }
             R.id.leave_request_fragment -> {
                 navController.navigate(R.id.leave_request_fragment)
