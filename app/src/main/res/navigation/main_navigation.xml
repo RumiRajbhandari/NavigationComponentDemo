@@ -10,6 +10,11 @@
         android:name="com.rumi.navigationcomponentdemo.SkuDetailFragment"
         android:label="Sku Detail"
         tools:layout="@layout/fragment_sku_detail" >
+        <argument
+            android:name="sku"
+            app:argType="com.rumi.navigationcomponentdemo.model.SkuModel"
+            app:nullable="true"
+            android:defaultValue="@null"/>
         <action
             android:id="@+id/action_skuDetailFragment_to_loginFragment"
             app:destination="@id/login_fragment"

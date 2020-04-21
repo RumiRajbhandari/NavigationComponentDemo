@@ -8,9 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.rumi.navigationcomponentdemo.model.SkuModel
 import kotlinx.android.synthetic.main.fragment_today.*
 
 class TodayFragment : Fragment() {
+
+    val sku = SkuModel(1, "Tiger Biscuit", 10f)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +30,8 @@ class TodayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn_detail.setOnClickListener {
-            findNavController().navigate(R.id.action_todayFragment_to_skuDetailFragment)
+            val action = TodayFragmentDirections.actionTodayFragmentToSkuDetailFragment(sku)
+            findNavController().navigate(action)
         }
     }
 
