@@ -36,10 +36,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return item.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
                 || super.onOptionsItemSelected(item)
-    }*/
+    }
 
     // similar to onbackpressed
     override fun onSupportNavigateUp(): Boolean {

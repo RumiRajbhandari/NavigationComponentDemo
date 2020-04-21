@@ -8,12 +8,12 @@
     <fragment
         android:id="@+id/skuDetailFragment"
         android:name="com.rumi.navigationcomponentdemo.SkuDetailFragment"
-        android:label="fragment_sku_detail"
+        android:label="Sku Detail"
         tools:layout="@layout/fragment_sku_detail" />
     <fragment
         android:id="@+id/todayFragment"
         android:name="com.rumi.navigationcomponentdemo.TodayFragment"
-        android:label="fragment_today"
+        android:label="Today"
         tools:layout="@layout/fragment_today" >
 
         <action
@@ -21,4 +21,9 @@
             app:destination="@id/skuDetailFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/setting_fragment"
+        android:name="com.rumi.navigationcomponentdemo.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting"/>
 </navigation>
