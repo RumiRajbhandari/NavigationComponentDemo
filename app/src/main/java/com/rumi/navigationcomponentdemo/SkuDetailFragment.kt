@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.evolve.rosiautils.PictureManager
 import com.evolve.rosiautils.TYPE_ERROR
 import com.evolve.rosiautils.TYPE_SUCCESS
@@ -22,7 +24,7 @@ class SkuDetailFragment : Fragment() {
 
     lateinit var binding: FragmentSkuDetailBinding
     private lateinit var pictureManager: PictureManager
-    val safeArgs : SkuDetailFragmentArgs by navArgs()
+    val safeArgs: SkuDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +38,11 @@ class SkuDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         pictureManager = PictureManager(this)
         binding.item = safeArgs.sku
+
+        val appBarConfiguration = AppBarConfiguration(findNavController().graph)
+        view.findViewById<Toolbar>(R.id.toolbar)
+            .setupWithNavController(findNavController(), appBarConfiguration)
+
 
         btn_take_pic.setOnClickListener {
             context?.let {

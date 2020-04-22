@@ -2,9 +2,7 @@ package com.rumi.navigationcomponentdemo
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -13,7 +11,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.onNavDestinationSelected
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -25,11 +22,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setSupportActionBar(findViewById<Toolbar>(R.id.toolbar))
-
         val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.todayFragment),
+            setOf(R.id.todayFragment, R.id.cart_fragment, R.id.leave_request_fragment),
             drawerLayout
         )
 
@@ -38,14 +33,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             checkIfDrawerNeedsToBeLock(destination.id)
-            if (destination.id == R.id.login_fragment) {
-                toolbar.visibility = View.GONE
-            } else {
-                toolbar.visibility = View.VISIBLE
-            }
         }
-
-        setupActionBarWithNavController(navController, appBarConfiguration)
         setupNavigationMenu(navController)
     }
 

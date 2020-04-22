@@ -6,14 +6,21 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import com.rumi.navigationcomponentdemo.databinding.FragmentTodayBinding
 import com.rumi.navigationcomponentdemo.model.SkuModel
-import kotlinx.android.synthetic.main.fragment_today.*
 
 class TodayFragment : Fragment() {
 
     val sku = SkuModel(1, "Tiger Biscuit", 10f)
+    lateinit var binding: FragmentTodayBinding
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,14 +31,40 @@ class TodayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_today, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_today, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_detail.setOnClickListener {
-            val action = TodayFragmentDirections.actionTodayFragmentToSkuDetailFragment(sku)
-            findNavController().navigate(action)
+
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolbar);
+        val drawerLayout: DrawerLayout? = activity?.findViewById(R.id.drawer_layout)
+        val navController = NavHostFragment.findNavController(this);
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.todayFragment, R.id.cart_fragment, R.id.leave_request_fragment),
+            drawerLayout
+        )
+        setupActionBarWithNavController(activity as AppCompatActivity, navController, appBarConfiguration)
+
+        childFragmentManager.beginTransaction().replace(R.id.fragment, DashboardFragment()).commit()
+        binding.bottomNavView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.today_fragment -> {
+                    childFragmentManager.beginTransaction().replace(R.id.fragment, DashboardFragment()).commit()
+
+                    true
+                }
+                R.id.cart_fragment -> {
+                    childFragmentManager.beginTransaction().replace(R.id.fragment, CartFragment()).commit()
+
+                    true
+                }
+                else -> {
+                    true
+                }
+            }
+
         }
     }
 
