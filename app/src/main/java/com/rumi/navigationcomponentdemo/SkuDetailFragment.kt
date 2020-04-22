@@ -47,6 +47,10 @@ class SkuDetailFragment : Fragment() {
         btn_logout.setOnClickListener {
             findNavController().navigate(R.id.action_skuDetailFragment_to_loginFragment)
         }
+
+        binding.btnBuy.setOnClickListener {
+            findNavController().navigate(R.id.action_skuDetailFragment_to_cartFragment)
+        }
     }
 
     private fun openCamera() {

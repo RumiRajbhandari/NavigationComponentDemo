@@ -27,17 +27,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         setSupportActionBar(findViewById<Toolbar>(R.id.toolbar))
 
-        val host: NavHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = host.navController
-
-        appBarConfiguration = AppBarConfiguration(navController.graph)
         val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
         appBarConfiguration = AppBarConfiguration(
             setOf(R.id.todayFragment),
             drawerLayout
         )
 
+        val host: NavHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = host.navController
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
+            checkIfDrawerNeedsToBeLock(destination.id)
             if (destination.id == R.id.login_fragment) {
                 toolbar.visibility = View.GONE
             } else {
@@ -68,6 +68,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.closeDrawer(GravityCompat.START)
         when (menu.itemId) {
             R.id.today_fragment -> {
+                // Pops today fragment if today menu is pressed multiple times
                 navController.popBackStack()
                 navController.navigate(R.id.todayFragment)
             }
@@ -80,5 +81,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
         return true
+    }
+
+    private fun checkIfDrawerNeedsToBeLock(fragmentId: Int) {
+        if (fragmentId in appBarConfiguration.topLevelDestinations)
+            drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+        else
+            drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
     }
 }

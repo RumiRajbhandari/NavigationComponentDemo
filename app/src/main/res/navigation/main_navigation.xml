@@ -20,7 +20,11 @@
             app:destination="@id/login_fragment"
             app:popUpTo="@id/todayFragment"
             app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_out_right"
             />
+        <action
+            android:id="@+id/action_skuDetailFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/todayFragment"
@@ -60,4 +64,9 @@
             app:popUpTo="@id/login_fragment"
             app:popUpToInclusive="true"/>
     </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.rumi.navigationcomponentdemo.CartFragment"
+        android:label="CartFragment"
+        tools:layout="@layout/fragment_cart"/>
 </navigation>
