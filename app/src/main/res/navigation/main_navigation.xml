@@ -20,11 +20,16 @@
             app:destination="@id/login_fragment"
             app:popUpTo="@id/todayFragment"
             app:popUpToInclusive="true"
-            app:enterAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/popup_context_in"
+            app:popExitAnim="@anim/popup_out"
             />
         <action
             android:id="@+id/action_skuDetailFragment_to_cartFragment"
-            app:destination="@id/cart_fragment" />
+            app:destination="@id/cart_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/todayFragment"
@@ -34,12 +39,17 @@
 
         <action
             android:id="@+id/action_todayFragment_to_skuDetailFragment"
-            app:destination="@id/skuDetailFragment"/>
+            app:destination="@id/skuDetailFragment"
+            app:enterAnim="@anim/popup_context_in"
+            app:exitAnim="@anim/popup_out"/>
         <action
             android:id="@+id/action_todayFragment_to_login_graph"
             app:destination="@id/login_fragment"
             app:popUpTo="@id/main_navigation"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true"
+
+            app:popEnterAnim="@anim/popup_context_in"
+            app:popExitAnim="@anim/popup_out"/>
 
     </fragment>
     <fragment
@@ -62,7 +72,10 @@
             android:id="@+id/action_login_fragment_to_todayFragment"
             app:destination="@id/todayFragment"
             app:popUpTo="@id/login_fragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true"
+
+            app:popEnterAnim="@anim/popup_context_in"
+            app:popExitAnim="@anim/popup_out"/>
     </fragment>
     <fragment
         android:id="@+id/cart_fragment"
