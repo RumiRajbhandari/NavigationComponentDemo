@@ -5,6 +5,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         setupNavigationMenu(navController)
         handleNightMode()
+        binding.navView.menu.findItem(R.id.leave_request_fragment).setActionView(R.layout.item_custom_menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

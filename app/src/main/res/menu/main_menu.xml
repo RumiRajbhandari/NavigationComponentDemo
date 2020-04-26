@@ -6,6 +6,7 @@
         android:title="@string/today_fragment" />
     <item
         android:id="@+id/leave_request_fragment"
+        android:actionLayout="@layout/item_custom_menu"
         android:title="@string/leave_request" />
     <item
         android:id="@+id/login_fragment"
