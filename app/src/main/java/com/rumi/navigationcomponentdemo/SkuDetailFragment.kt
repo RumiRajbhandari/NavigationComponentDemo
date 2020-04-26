@@ -56,8 +56,10 @@ class SkuDetailFragment : Fragment() {
         }
 
         binding.btnBuy.setOnClickListener {
-            findNavController().navigate(R.id.action_skuDetailFragment_to_cartFragment)
+            findNavController().navigate(R.id.action_skuDetailFragment_to_paymentFragment)
         }
+
+       getDataFromPreviousFragment()
     }
 
     private fun openCamera() {
@@ -79,5 +81,12 @@ class SkuDetailFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         pictureManager.onActivityResult(requestCode, resultCode, data)
+    }
+
+    // Similar to onActivityResult
+    private fun getDataFromPreviousFragment(){
+        val result = findNavController().currentBackStackEntry?.savedStateHandle?.get<String>("data")
+        if (!result.isNullOrEmpty())
+            showToast(result, TYPE_SUCCESS)
     }
 }
