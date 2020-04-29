@@ -24,12 +24,8 @@
             app:popExitAnim="@anim/popup_out"
             />
         <action
-            android:id="@+id/action_skuDetailFragment_to_cartFragment"
-            app:destination="@id/cart_fragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            android:id="@+id/action_skuDetailFragment_to_paymentFragment"
+            app:destination="@id/payment_fragment" />
     </fragment>
     <fragment
         android:id="@+id/todayFragment"
@@ -82,4 +78,8 @@
         android:name="com.rumi.navigationcomponentdemo.CartFragment"
         android:label="CartFragment"
         tools:layout="@layout/fragment_cart"/>
+    <fragment
+        android:id="@+id/payment_fragment"
+        android:name="com.rumi.navigationcomponentdemo.PaymentFragment"
+        android:label="PaymentFragment" />
 </navigation>
