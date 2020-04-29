@@ -20,7 +20,7 @@ import com.evolve.rosiautils.showToast
 import com.rumi.navigationcomponentdemo.databinding.FragmentSkuDetailBinding
 import kotlinx.android.synthetic.main.fragment_sku_detail.*
 
-class SkuDetailFragment : Fragment() {
+class SkuDetailFragment: Fragment() {
 
     lateinit var binding: FragmentSkuDetailBinding
     private lateinit var pictureManager: PictureManager

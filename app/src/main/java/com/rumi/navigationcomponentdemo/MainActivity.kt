@@ -5,7 +5,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
-import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -15,6 +14,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.onNavDestinationSelected
 import com.google.android.material.navigation.NavigationView
+import com.rumi.navigationcomponentdemo.data.SharedPreferenceManager
 import com.rumi.navigationcomponentdemo.databinding.ActivityMainBinding
 import com.rumi.navigationcomponentdemo.databinding.NavHeaderMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
     lateinit var binding: ActivityMainBinding
-    var isNightModeOn = false
+    val sharedPref by lazy { SharedPreferenceManager(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,8 +42,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             checkIfDrawerNeedsToBeLock(destination.id)
         }
         setupNavigationMenu(navController)
-        handleNightMode()
         binding.navView.menu.findItem(R.id.leave_request_fragment).setActionView(R.layout.item_custom_menu)
+
+        val navRootView = binding.navView.getHeaderView(0)
+        val navHeaderMainBinding: NavHeaderMainBinding = NavHeaderMainBinding.bind(navRootView)
+        navHeaderMainBinding.imgNightmode.setOnClickListener {
+            handleNightMode()
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -87,17 +92,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
     }
 
-    private fun handleNightMode(){
-        val navRootView = binding.navView.getHeaderView(0)
-        val navHeaderMainBinding: NavHeaderMainBinding = NavHeaderMainBinding.bind(navRootView)
-        navHeaderMainBinding.imgNightmode.setOnClickListener {
-            isNightModeOn = if (isNightModeOn) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                false
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                true
-            }
+    private fun handleNightMode() {
+        val isNightModeOn = sharedPref.nightModeStatus
+        sharedPref.nightModeStatus = !isNightModeOn
+        if (isNightModeOn) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
     }
 }
