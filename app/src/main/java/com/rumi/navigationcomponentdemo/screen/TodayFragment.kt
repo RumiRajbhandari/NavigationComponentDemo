@@ -1,4 +1,4 @@
-package com.rumi.navigationcomponentdemo
+package com.rumi.navigationcomponentdemo.screen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import com.rumi.navigationcomponentdemo.R
 import com.rumi.navigationcomponentdemo.databinding.FragmentTodayBinding
 import com.rumi.navigationcomponentdemo.model.SkuModel
 
@@ -31,7 +32,8 @@ class TodayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_today, container, false)
+        binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_today, container, false)
         return binding.root
     }
 
@@ -42,21 +44,34 @@ class TodayFragment : Fragment() {
         val drawerLayout: DrawerLayout? = activity?.findViewById(R.id.drawer_layout)
         val navController = NavHostFragment.findNavController(this);
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.todayFragment, R.id.cart_fragment, R.id.leave_request_fragment),
+            setOf(
+                R.id.todayFragment,
+                R.id.cart_fragment,
+                R.id.leave_request_fragment
+            ),
             drawerLayout
         )
         setupActionBarWithNavController(activity as AppCompatActivity, navController, appBarConfiguration)
 
-        childFragmentManager.beginTransaction().replace(R.id.fragment, DashboardFragment()).commit()
+        childFragmentManager.beginTransaction().replace(
+            R.id.fragment,
+            DashboardFragment()
+        ).commit()
         binding.bottomNavView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.today_fragment -> {
-                    childFragmentManager.beginTransaction().replace(R.id.fragment, DashboardFragment()).commit()
+                    childFragmentManager.beginTransaction().replace(
+                        R.id.fragment,
+                        DashboardFragment()
+                    ).commit()
 
                     true
                 }
                 R.id.cart_fragment -> {
-                    childFragmentManager.beginTransaction().replace(R.id.fragment, CartFragment()).commit()
+                    childFragmentManager.beginTransaction().replace(
+                        R.id.fragment,
+                        CartFragment()
+                    ).commit()
 
                     true
                 }

@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".TodayFragment">
+        tools:context=".screen.TodayFragment">
 
         <FrameLayout
             android:id="@+id/fragment"
@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+            style="@style/ToolBarStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,12 +34,9 @@
             android:id="@+id/bottom_nav_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/BottomNavStyle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/bottom_menu" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <data>
-
-    </data>
 </layout>

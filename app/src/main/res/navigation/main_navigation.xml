@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/skuDetailFragment"
-        android:name="com.rumi.navigationcomponentdemo.SkuDetailFragment"
+        android:name="com.rumi.navigationcomponentdemo.screen.SkuDetailFragment"
         android:label="Sku Detail"
         tools:layout="@layout/fragment_sku_detail" >
         <argument
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/todayFragment"
-        android:name="com.rumi.navigationcomponentdemo.TodayFragment"
+        android:name="com.rumi.navigationcomponentdemo.screen.TodayFragment"
         android:label="Today"
         tools:layout="@layout/fragment_today" >
 
@@ -50,18 +50,18 @@
     </fragment>
     <fragment
         android:id="@+id/setting_fragment"
-        android:name="com.rumi.navigationcomponentdemo.SettingFragment"
+        android:name="com.rumi.navigationcomponentdemo.screen.SettingFragment"
         android:label="SettingFragment"
         tools:layout="@layout/fragment_setting"/>
     <fragment
         android:id="@+id/leave_request_fragment"
-        android:name="com.rumi.navigationcomponentdemo.LeaveRequestFragment"
+        android:name="com.rumi.navigationcomponentdemo.screen.LeaveRequestFragment"
         android:label="LeaveRequestFragment"
         tools:layout="@layout/fragment_leaverequest"/>
 
     <fragment
         android:id="@+id/login_fragment"
-        android:name="com.rumi.navigationcomponentdemo.LoginFragment"
+        android:name="com.rumi.navigationcomponentdemo.screen.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
@@ -75,11 +75,11 @@
     </fragment>
     <fragment
         android:id="@+id/cart_fragment"
-        android:name="com.rumi.navigationcomponentdemo.CartFragment"
+        android:name="com.rumi.navigationcomponentdemo.screen.CartFragment"
         android:label="CartFragment"
         tools:layout="@layout/fragment_cart"/>
     <fragment
         android:id="@+id/payment_fragment"
-        android:name="com.rumi.navigationcomponentdemo.PaymentFragment"
+        android:name="com.rumi.navigationcomponentdemo.screen.PaymentFragment"
         android:label="PaymentFragment" />
 </navigation>

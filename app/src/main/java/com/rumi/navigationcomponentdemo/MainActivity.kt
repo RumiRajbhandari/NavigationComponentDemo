@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
     lateinit var binding: ActivityMainBinding
-    val sharedPref by lazy { SharedPreferenceManager(this) }
+    val sharedPreference by lazy { SharedPreferenceManager(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,8 +93,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun handleNightMode() {
-        val isNightModeOn = sharedPref.nightModeStatus
-        sharedPref.nightModeStatus = !isNightModeOn
+        val isNightModeOn = sharedPreference.nightModeStatus
+        sharedPreference.nightModeStatus = !isNightModeOn
         if (isNightModeOn) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         } else {

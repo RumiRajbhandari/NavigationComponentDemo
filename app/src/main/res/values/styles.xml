@@ -9,4 +9,33 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ToolBarStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/textColorPrimaryDark</item>
+        <item name="android:titleTextAppearance">@style/MyToolbarTitleTextAppearance</item>
+    </style>
+
+    <style name="MyToolbarTitleTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!--Custom Buttom Style-->
+    <style name="button_style">
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColor">@color/textColorPrimaryInverse</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="BottomNavStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorAccent</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textSize">8dp</item>
+        <item name="itemTextColor">@color/bottom_nav_selector</item>
+        <item name="itemIconTint">@color/bottom_nav_selector</item>
+    </style>
+
 </resources>

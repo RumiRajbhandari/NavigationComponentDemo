@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
-    <color name="marginColor">#FFE4E8F0</color>
+    <color name="colorAccent">@color/blue_2E5BFF</color>
+    <color name="colorPrimary">@color/white_FFFFFF</color>
+    <color name="colorPrimaryDark">@color/white_FFFFFF</color>
+
+    <color name="mainBackground">@color/grey_EEF3F5</color>
+    <color name="marginColor">@color/grey_FFE4E8F0</color>
+
+    <color name="iconColor">@color/grey_8798AD</color>
+    <color name="iconColorBottomNav">@color/grey_BFC5D2</color>
+
+    <color name="textColorPrimaryDark">@color/grey_2E384D</color>
+    <color name="textColorPrimary">@color/grey_69707F</color>
+    <color name="textColorPrimaryInverse">@color/white_FFFFFF</color>
+
+    <color name="white_FFFFFF">#ffffff</color>
+
+    <!--BLACK-->
+    <color name="black_222A34">#222A34</color>
+    <color name="black_2E384D">#2E384D</color>
+    <color name="black_99000000">#99000000</color>
+
+    <!--GREY-->
+    <color name="grey_BFC5D2">#BFC5D2</color>
+    <color name="grey_EEF3F5">#EEF3F5</color>
+    <color name="grey_8798AD">#8798AD</color>
+    <color name="grey_69707F">#69707F</color>
+    <color name="grey_2E384D">#2E384D</color>
+    <color name="grey_FFE4E8F0">#FFE4E8F0</color>
+
+    <!--BLUE-->
+    <color name="blue_2E5BFF">#2E5BFF</color>
+    <color name="blue_1294F7">#FF1294F7</color>
+
 </resources>

@@ -3,10 +3,10 @@
 
     <item
         android:id="@+id/today_fragment"
-        android:icon="@android:drawable/ic_menu_gallery"
-        android:title="@string/today_fragment" />
+        android:icon="@drawable/ic_home_compat"
+        android:title="@string/home" />
     <item
         android:id="@+id/cart_fragment"
-        android:icon="@android:drawable/ic_input_add"
+        android:icon="@drawable/ic_cart_compat"
         android:title="@string/cart"/>
 </menu>

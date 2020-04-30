@@ -3,9 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/parent"
         android:layout_width="match_parent"
@@ -15,21 +12,52 @@
         tools:showIn="@layout/activity_main">
 
         <ImageView
+            android:id="@+id/img_dse"
+            android:layout_width="@dimen/nav_header_image"
+            android:layout_height="@dimen/nav_header_image"
+            android:layout_marginStart="32dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/avatar_compat"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
             android:id="@+id/img_nightmode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:padding="8dp"
             android:src="@drawable/ic_moon"
-            android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kathmandu"
+            android:textColor="@color/textColorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/tv_number"
+            app:layout_constraintTop_toBottomOf="@+id/tv_number"
+            tools:text="Kathmandu" />
+
+        <TextView
+            android:id="@+id/tv_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Ram Bahadur"
+            android:textColor="@color/textColorPrimary"
+            app:layout_constraintStart_toEndOf="@+id/img_dse"
+            app:layout_constraintTop_toTopOf="@+id/img_dse"
+            tools:text="9840000000" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/marginColor"
             app:layout_constraintBottom_toBottomOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

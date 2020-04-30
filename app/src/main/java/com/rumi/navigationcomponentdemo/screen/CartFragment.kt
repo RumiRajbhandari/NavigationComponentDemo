@@ -1,12 +1,13 @@
-package com.rumi.navigationcomponentdemo
+package com.rumi.navigationcomponentdemo.screen
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.rumi.navigationcomponentdemo.R
 
-class SettingFragment : Fragment() {
+class CartFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,12 +18,11 @@ class SettingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_setting, container, false)
+        return inflater.inflate(R.layout.fragment_cart, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(false)
-
     }
 }

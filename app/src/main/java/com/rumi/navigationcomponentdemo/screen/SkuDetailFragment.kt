@@ -1,4 +1,4 @@
-package com.rumi.navigationcomponentdemo
+package com.rumi.navigationcomponentdemo.screen
 
 import android.content.Intent
 import android.os.Bundle
@@ -17,6 +17,7 @@ import com.evolve.rosiautils.TYPE_ERROR
 import com.evolve.rosiautils.TYPE_SUCCESS
 import com.evolve.rosiautils.loadImage
 import com.evolve.rosiautils.showToast
+import com.rumi.navigationcomponentdemo.R
 import com.rumi.navigationcomponentdemo.databinding.FragmentSkuDetailBinding
 import kotlinx.android.synthetic.main.fragment_sku_detail.*
 
@@ -30,7 +31,8 @@ class SkuDetailFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sku_detail, container, false)
+        binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_sku_detail, container, false)
         return binding.root
     }
 

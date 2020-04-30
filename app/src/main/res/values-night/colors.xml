@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#333333</color>
-    <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#03DAC5</color>
-    <color name="marginColor">#FFE4E8F0</color>
+    <color name="colorAccent">@color/blue_1294F7</color>
+    <color name="colorPrimary">@color/black_222A34</color>
+    <color name="colorPrimaryDark">@color/black_222A34</color>
+
+    <color name="mainBackground">@color/black_2E384D</color>
+    <color name="iconColor">@color/white_FFFFFF</color>
+    <color name="iconColorBottomNav">@color/white_FFFFFF</color>
+
+    <color name="textColorPrimaryDark">@color/white_FFFFFF</color>
+    <color name="textColorPrimary">@color/white_FFFFFF</color>
+    <color name="textColorPrimaryInverse">@color/black_99000000</color>
+
 </resources>
