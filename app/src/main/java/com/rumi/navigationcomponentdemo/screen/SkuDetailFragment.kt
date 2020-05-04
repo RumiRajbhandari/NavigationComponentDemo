@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityOptionsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.ActivityNavigator
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import androidx.transition.TransitionInflater
 import com.evolve.rosiautils.PictureManager
 import com.evolve.rosiautils.TYPE_ERROR
 import com.evolve.rosiautils.TYPE_SUCCESS
@@ -20,12 +23,18 @@ import com.evolve.rosiautils.showToast
 import com.rumi.navigationcomponentdemo.R
 import com.rumi.navigationcomponentdemo.databinding.FragmentSkuDetailBinding
 import kotlinx.android.synthetic.main.fragment_sku_detail.*
+import androidx.core.util.Pair as UtilPair
 
 class SkuDetailFragment: Fragment() {
 
     lateinit var binding: FragmentSkuDetailBinding
     private lateinit var pictureManager: PictureManager
     val safeArgs: SkuDetailFragmentArgs by navArgs()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

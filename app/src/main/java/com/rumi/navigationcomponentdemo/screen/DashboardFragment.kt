@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.rumi.navigationcomponentdemo.R
 import com.rumi.navigationcomponentdemo.databinding.FragmentDashboardBinding
@@ -36,11 +37,14 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn_detail.setOnClickListener {
+            val extras = FragmentNavigatorExtras(
+                binding.imgSku to "imageView"
+            )
             val action =
                 TodayFragmentDirections.actionTodayFragmentToSkuDetailFragment(
                     sku
                 )
-            findNavController().navigate(action)
+            findNavController().navigate(action,extras)
         }
     }
 
