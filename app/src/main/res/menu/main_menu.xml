@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/today_fragment"
-        android:title="@string/today_fragment" />
+        android:id="@+id/home_fragment"
+        android:title="@string/home_fragment" />
     <item
         android:id="@+id/leave_request_fragment"
         android:actionLayout="@layout/item_custom_menu"
         android:title="@string/leave_request" />
     <item
         android:id="@+id/login_fragment"
-        android:title="@string/logout"/>
+        android:title="@string/logout" />
 </menu>

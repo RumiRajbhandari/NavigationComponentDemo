@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/todayFragment">
+    app:startDestination="@id/home_fragment">
 
     <fragment
         android:id="@+id/skuDetailFragment"
@@ -18,7 +18,7 @@
         <action
             android:id="@+id/action_skuDetailFragment_to_loginFragment"
             app:destination="@id/login_fragment"
-            app:popUpTo="@id/todayFragment"
+            app:popUpTo="@id/home_fragment"
             app:popUpToInclusive="true"
             app:popEnterAnim="@anim/popup_context_in"
             app:popExitAnim="@anim/popup_out"
@@ -28,10 +28,10 @@
             app:destination="@id/payment_fragment" />
     </fragment>
     <fragment
-        android:id="@+id/todayFragment"
-        android:name="com.rumi.navigationcomponentdemo.screen.TodayFragment"
-        android:label="Today"
-        tools:layout="@layout/fragment_today" >
+        android:id="@+id/home_fragment"
+        android:name="com.rumi.navigationcomponentdemo.screen.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
 
         <action
             android:id="@+id/action_todayFragment_to_skuDetailFragment"
@@ -66,7 +66,7 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_login_fragment_to_todayFragment"
-            app:destination="@id/todayFragment"
+            app:destination="@id/home_fragment"
             app:popUpTo="@id/login_fragment"
             app:popUpToInclusive="true"
 

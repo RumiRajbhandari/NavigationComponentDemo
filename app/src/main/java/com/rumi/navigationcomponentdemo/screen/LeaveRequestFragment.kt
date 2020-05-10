@@ -28,8 +28,5 @@ class LeaveRequestFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(false)
-        val appBarConfiguration = AppBarConfiguration(findNavController().graph)
-        view.findViewById<Toolbar>(R.id.toolbar)
-            .setupWithNavController(findNavController(), appBarConfiguration)
     }
 }

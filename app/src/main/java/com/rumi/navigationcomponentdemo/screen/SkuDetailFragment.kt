@@ -50,11 +50,6 @@ class SkuDetailFragment: Fragment() {
         pictureManager = PictureManager(this)
         binding.item = safeArgs.sku
 
-        val appBarConfiguration = AppBarConfiguration(findNavController().graph)
-        view.findViewById<Toolbar>(R.id.toolbar)
-            .setupWithNavController(findNavController(), appBarConfiguration)
-
-
         btn_take_pic.setOnClickListener {
             context?.let {
                 if (pictureManager.hasPermission(it)) {

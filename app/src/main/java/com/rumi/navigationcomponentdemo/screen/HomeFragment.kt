@@ -11,14 +11,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.rumi.navigationcomponentdemo.R
-import com.rumi.navigationcomponentdemo.databinding.FragmentDashboardBinding
+import com.rumi.navigationcomponentdemo.databinding.FragmentHomeBinding
 import com.rumi.navigationcomponentdemo.model.SkuModel
-import kotlinx.android.synthetic.main.fragment_dashboard.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
-class DashboardFragment : Fragment() {
+class HomeFragment : Fragment() {
 
     val sku = SkuModel(1, "Tiger Biscuit", 10f)
-    lateinit var binding: FragmentDashboardBinding
+    lateinit var binding: FragmentHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_dashboard, container, false)
+            R.layout.fragment_home, container, false)
         return binding.root
     }
 
@@ -41,7 +41,7 @@ class DashboardFragment : Fragment() {
                 binding.imgSku to "imageView"
             )
             val action =
-                TodayFragmentDirections.actionTodayFragmentToSkuDetailFragment(
+                HomeFragmentDirections.actionTodayFragmentToSkuDetailFragment(
                     sku
                 )
             findNavController().navigate(action,extras)

@@ -2,6 +2,7 @@ package com.rumi.navigationcomponentdemo
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
@@ -13,6 +14,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.rumi.navigationcomponentdemo.data.SharedPreferenceManager
 import com.rumi.navigationcomponentdemo.databinding.ActivityMainBinding
@@ -23,25 +26,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
     lateinit var binding: ActivityMainBinding
-    val sharedPreference by lazy { SharedPreferenceManager(this) }
+    private val sharedPreference by lazy { SharedPreferenceManager(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-        val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
-        appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.todayFragment, R.id.cart_fragment, R.id.leave_request_fragment),
-            drawerLayout
-        )
+        setSupportActionBar(binding.toolbar)
 
         val host: NavHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = host.navController
 
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            checkIfDrawerNeedsToBeLock(destination.id)
-        }
-        setupNavigationMenu(navController)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.home_fragment, R.id.cart_fragment, R.id.leave_request_fragment),
+            binding.drawerLayout
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
+        setupNavigationMenu()
+        setUpDestinationChangeListener()
+        binding.bottomNavView.setupWithNavController(navController)
         binding.navView.menu.findItem(R.id.leave_request_fragment).setActionView(R.layout.item_custom_menu)
 
         val navRootView = binding.navView.getHeaderView(0)
@@ -61,18 +64,28 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfiguration)
     }
 
-    private fun setupNavigationMenu(navController: NavController) {
-        val sideNavView = findViewById<NavigationView>(R.id.nav_view)
-        sideNavView.setNavigationItemSelectedListener(this)
+    private fun setupNavigationMenu() {
+        binding.navView.setNavigationItemSelectedListener(this)
+    }
+
+    private fun setUpDestinationChangeListener(){
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            checkIfDrawerNeedsToBeLock(destination.id)
+            if (destination.id in appBarConfiguration.topLevelDestinations){
+                supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
+            }else{
+                supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_chevron_left)
+            }
+        }
     }
 
     override fun onNavigationItemSelected(menu: MenuItem): Boolean {
         drawer_layout.closeDrawer(GravityCompat.START)
         when (menu.itemId) {
-            R.id.today_fragment -> {
+            R.id.home_fragment -> {
                 // Pops today fragment if today menu is pressed multiple times
                 navController.popBackStack()
-                navController.navigate(R.id.todayFragment)
+                navController.navigate(R.id.home_fragment)
             }
             R.id.leave_request_fragment -> {
                 navController.navigate(R.id.leave_request_fragment)
