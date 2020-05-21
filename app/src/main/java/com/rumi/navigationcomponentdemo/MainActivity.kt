@@ -140,4 +140,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         notificationsBadge = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.layout_badge, child, false)
         return notificationsBadge!!
     }
+
+    private fun removeBadge(){
+        binding.bottomNavView.removeView(notificationsBadge?.root)
+    }
 }
