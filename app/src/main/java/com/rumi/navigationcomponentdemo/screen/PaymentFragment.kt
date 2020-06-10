@@ -30,7 +30,7 @@ class PaymentFragment : Fragment() {
     }
 
     private fun passDataToPreviousFragment(){
-        findNavController()previousBackStackEntry?.savedStateHandle?.set("data","rumi")
+        findNavController().previousBackStackEntry?.savedStateHandle?.set("data","rumi")
 
     }
 }

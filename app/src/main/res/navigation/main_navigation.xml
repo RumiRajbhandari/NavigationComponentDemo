@@ -2,52 +2,9 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_navigation"
-    app:startDestination="@id/home_fragment">
+    android:id="@+id/home"
+    app:startDestination="@id/home">
 
-    <fragment
-        android:id="@+id/skuDetailFragment"
-        android:name="com.rumi.navigationcomponentdemo.screen.SkuDetailFragment"
-        android:label="Sku Detail"
-        tools:layout="@layout/fragment_sku_detail" >
-        <argument
-            android:name="sku"
-            app:argType="com.rumi.navigationcomponentdemo.model.SkuModel"
-            app:nullable="true"
-            android:defaultValue="@null"/>
-        <action
-            android:id="@+id/action_skuDetailFragment_to_loginFragment"
-            app:destination="@id/login_fragment"
-            app:popUpTo="@id/home_fragment"
-            app:popUpToInclusive="true"
-            app:popEnterAnim="@anim/popup_context_in"
-            app:popExitAnim="@anim/popup_out"
-            />
-        <action
-            android:id="@+id/action_skuDetailFragment_to_paymentFragment"
-            app:destination="@id/payment_fragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/home_fragment"
-        android:name="com.rumi.navigationcomponentdemo.screen.HomeFragment"
-        android:label="Home"
-        tools:layout="@layout/fragment_home" >
-
-        <action
-            android:id="@+id/action_todayFragment_to_skuDetailFragment"
-            app:destination="@id/skuDetailFragment"
-            app:enterAnim="@anim/popup_context_in"
-            app:exitAnim="@anim/popup_out"/>
-        <action
-            android:id="@+id/action_todayFragment_to_login_graph"
-            app:destination="@id/login_fragment"
-            app:popUpTo="@id/main_navigation"
-            app:popUpToInclusive="true"
-
-            app:popEnterAnim="@anim/popup_context_in"
-            app:popExitAnim="@anim/popup_out"/>
-
-    </fragment>
     <fragment
         android:id="@+id/setting_fragment"
         android:name="com.rumi.navigationcomponentdemo.screen.SettingFragment"
@@ -66,20 +23,57 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_login_fragment_to_todayFragment"
-            app:destination="@id/home_fragment"
+            app:destination="@id/home"
             app:popUpTo="@id/login_fragment"
             app:popUpToInclusive="true"
 
             app:popEnterAnim="@anim/popup_context_in"
             app:popExitAnim="@anim/popup_out"/>
     </fragment>
+
     <fragment
-        android:id="@+id/cart_fragment"
-        android:name="com.rumi.navigationcomponentdemo.screen.CartFragment"
-        android:label="CartFragment"
-        tools:layout="@layout/fragment_cart"/>
+        android:id="@+id/home"
+        android:name="com.rumi.navigationcomponentdemo.screen.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
+
+        <action
+            android:id="@+id/action_todayFragment_to_skuDetailFragment"
+            app:destination="@id/skuDetailFragment"
+            app:enterAnim="@anim/popup_context_in"
+            app:exitAnim="@anim/popup_out"/>
+        <action
+            android:id="@+id/action_todayFragment_to_login_graph"
+            app:destination="@id/login_fragment"
+            app:popUpTo="@id/home"
+            app:popUpToInclusive="true"
+
+            app:popEnterAnim="@anim/popup_context_in"
+            app:popExitAnim="@anim/popup_out"/>
+
+    </fragment>
+
     <fragment
-        android:id="@+id/payment_fragment"
-        android:name="com.rumi.navigationcomponentdemo.screen.PaymentFragment"
-        android:label="PaymentFragment" />
+        android:id="@+id/skuDetailFragment"
+        android:name="com.rumi.navigationcomponentdemo.screen.SkuDetailFragment"
+        android:label="Sku Detail"
+        tools:layout="@layout/fragment_sku_detail" >
+        <argument
+            android:name="sku"
+            app:argType="com.rumi.navigationcomponentdemo.model.SkuModel"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+        <action
+            android:id="@+id/action_skuDetailFragment_to_loginFragment"
+            app:destination="@id/login_fragment"
+            app:popUpTo="@id/home"
+            app:popUpToInclusive="true"
+            app:popEnterAnim="@anim/popup_context_in"
+            app:popExitAnim="@anim/popup_out"
+            />
+        <action
+            android:id="@+id/action_skuDetailFragment_to_paymentFragment"
+            app:destination="@id/payment" />
+    </fragment>
+    <include  app:graph="@navigation/payment"/>
 </navigation>
