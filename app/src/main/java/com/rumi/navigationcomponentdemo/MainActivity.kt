@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navController = host.navController
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.home_fragment, R.id.cart_fragment, R.id.leave_request_fragment),
+            setOf(R.id.home_fragment, R.id.cart_fragment, R.id.terms_condition_fragment),
             binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setupNavigationMenu()
         setUpDestinationChangeListener()
         binding.bottomNavView.setupWithNavController(navController)
-        binding.navView.menu.findItem(R.id.leave_request_fragment).setActionView(R.layout.item_custom_menu)
+        binding.navView.menu.findItem(R.id.terms_condition_fragment).setActionView(R.layout.item_custom_menu)
 
         val navRootView = binding.navView.getHeaderView(0)
         val navHeaderMainBinding: NavHeaderMainBinding = NavHeaderMainBinding.bind(navRootView)
@@ -98,8 +98,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 navController.popBackStack()
                 navController.navigate(R.id.home_fragment)
             }
-            R.id.leave_request_fragment -> {
-                navController.navigate(R.id.leave_request_fragment)
+            R.id.terms_condition_fragment -> {
+                navController.navigate(R.id.terms_condition_fragment)
             }
             R.id.login_fragment -> {
                 navController.popBackStack()

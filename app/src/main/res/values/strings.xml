@@ -8,11 +8,11 @@
     <string name="price_rs_10">Price: RS 10</string>
     <string name="take_picture">Take Picture</string>
     <string name="settings">Settings</string>
-    <string name="leave_request">Leave Request</string>
     <string name="sku_detail">Sku Detail</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>
     <string name="cart">Cart</string>
     <string name="payment">Payment</string>
     <string name="home">Home</string>
+    <string name="terms_condition"><![CDATA[Terms & Condition]]></string>
 </resources>

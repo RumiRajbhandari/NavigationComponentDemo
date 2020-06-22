@@ -4,9 +4,8 @@
         android:id="@+id/home_fragment"
         android:title="@string/home_fragment" />
     <item
-        android:id="@+id/leave_request_fragment"
-        android:actionLayout="@layout/item_custom_menu"
-        android:title="@string/leave_request" />
+        android:id="@+id/terms_condition_fragment"
+        android:title="@string/terms_condition" />
     <item
         android:id="@+id/login_fragment"
         android:title="@string/logout" />

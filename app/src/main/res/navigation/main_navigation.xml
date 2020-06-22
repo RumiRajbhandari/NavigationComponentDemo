@@ -54,10 +54,10 @@
         android:label="SettingFragment"
         tools:layout="@layout/fragment_setting"/>
     <fragment
-        android:id="@+id/leave_request_fragment"
-        android:name="com.rumi.navigationcomponentdemo.screen.LeaveRequestFragment"
+        android:id="@+id/terms_condition_fragment"
+        android:name="com.rumi.navigationcomponentdemo.screen.TermsAndConditionFragment"
         android:label="LeaveRequestFragment"
-        tools:layout="@layout/fragment_leaverequest"/>
+        tools:layout="@layout/fragment_terms_and_condition"/>
 
     <fragment
         android:id="@+id/login_fragment"
