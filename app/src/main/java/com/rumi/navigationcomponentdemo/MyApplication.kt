@@ -3,7 +3,9 @@ package com.rumi.navigationcomponentdemo
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import com.rumi.navigationcomponentdemo.data.SharedPreferenceManager
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class MyApplication: Application() {
 
     private val sharedPreferenceManager by lazy { SharedPreferenceManager(this) }

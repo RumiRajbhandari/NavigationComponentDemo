@@ -25,9 +25,11 @@ import com.rumi.navigationcomponentdemo.data.SharedPreferenceManager
 import com.rumi.navigationcomponentdemo.databinding.ActivityMainBinding
 import com.rumi.navigationcomponentdemo.databinding.LayoutBadgeBinding
 import com.rumi.navigationcomponentdemo.databinding.NavHeaderMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_badge.*
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
