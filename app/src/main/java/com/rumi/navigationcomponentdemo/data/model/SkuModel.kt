@@ -7,5 +7,7 @@ import kotlinx.android.parcel.Parcelize
 data class SkuModel(
     var id: Int,
     var name: String,
-    var price: Float
+    var price: Int,
+    var priceUnit: String,
+    var image: String
 ) : Parcelable

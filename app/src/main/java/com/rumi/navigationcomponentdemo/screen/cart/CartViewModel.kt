@@ -16,10 +16,10 @@ class CartViewModel @ViewModelInject constructor(private val cartRepository: Car
         get() = _carts
 
     init {
-        fetchSkuList()
+//        fetchSkuList()
     }
 
-    fun fetchSkuList() {
+    /*fun fetchSkuList() {
         viewModelScope.launch {
             _carts.postValue(Response.loading(null))
             cartRepository.getCartList().let {
@@ -29,5 +29,5 @@ class CartViewModel @ViewModelInject constructor(private val cartRepository: Car
                     _carts.postValue(Response.error(null, it.errorBody().toString()))
             }
         }
-    }
+    }*/
 }

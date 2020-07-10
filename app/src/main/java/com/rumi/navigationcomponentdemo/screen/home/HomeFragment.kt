@@ -13,19 +13,18 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.rumi.navigationcomponentdemo.R
-import com.rumi.navigationcomponentdemo.databinding.FragmentHomeBinding
 import com.rumi.navigationcomponentdemo.data.model.SkuModel
+import com.rumi.navigationcomponentdemo.databinding.FragmentHomeBinding
 import com.rumi.navigationcomponentdemo.utils.Status
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_home.*
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private val homeViewModel: HomeViewModel by viewModels()
-
-    val sku = SkuModel(1, "Tiger Biscuit", 10f)
     lateinit var binding: FragmentHomeBinding
+    var adapter: SkuAdapter? = null
+    var skuList: List<SkuModel> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,23 +36,31 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_home, container, false)
+        if (::binding.isInitialized) return  binding.root
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_home, container, false
+        )
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_detail.setOnClickListener {
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+        adapter = SkuAdapter(skuList, onItemClicked = { sku, imageView ->
             val extras = FragmentNavigatorExtras(
-                binding.imgSku to "imageView"
+                imageView to sku.id.toString()
             )
             val action =
                 HomeFragmentDirections.actionTodayFragmentToSkuDetailFragment(
                     sku
                 )
-            findNavController().navigate(action,extras)
-        }
+            findNavController().navigate(action, extras)
+        })
+        binding.rvSku.adapter = adapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -61,24 +68,22 @@ class HomeFragment : Fragment() {
         inflater.inflate(R.menu.overflow_menu, menu)
     }
 
-    private fun observeSkuListResponse(){
+    private fun observeSkuListResponse() {
         homeViewModel.skuListResponse.observe(this, Observer {
-            when(it.status){
-                Status.LOADING->{
+            when (it.status) {
+                Status.LOADING -> {
                     println("loading data")
-
                 }
                 Status.SUCCESS -> {
                     it.data?.let {
-
+                        this.skuList = it
+                        adapter?.updateData(skuList)
                         println("sku list success $it")
                     }
-
                 }
-                Status.ERROR ->{
+                Status.ERROR -> {
 
                     println("error")
-
                 }
             }
         })

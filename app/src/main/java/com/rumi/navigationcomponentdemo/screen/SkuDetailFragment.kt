@@ -5,15 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.Toolbar
-import androidx.core.app.ActivityOptionsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.ActivityNavigator
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupWithNavController
 import androidx.transition.TransitionInflater
 import com.evolve.rosiautils.PictureManager
 import com.evolve.rosiautils.TYPE_ERROR
@@ -23,9 +18,8 @@ import com.evolve.rosiautils.showToast
 import com.rumi.navigationcomponentdemo.R
 import com.rumi.navigationcomponentdemo.databinding.FragmentSkuDetailBinding
 import kotlinx.android.synthetic.main.fragment_sku_detail.*
-import androidx.core.util.Pair as UtilPair
 
-class SkuDetailFragment: Fragment() {
+class SkuDetailFragment : Fragment() {
 
     lateinit var binding: FragmentSkuDetailBinding
     private lateinit var pictureManager: PictureManager
@@ -40,15 +34,19 @@ class SkuDetailFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_sku_detail, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_sku_detail, container, false
+        )
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         pictureManager = PictureManager(this)
-        binding.item = safeArgs.sku
+        val sku = safeArgs.sku
+        binding.item = sku
+        binding.imgSku.transitionName = sku?.id.toString()
 
         btn_take_pic.setOnClickListener {
             context?.let {
@@ -65,7 +63,7 @@ class SkuDetailFragment: Fragment() {
             findNavController().navigate(R.id.action_skuDetailFragment_to_paymentFragment)
         }
 
-       getDataFromPreviousFragment()
+        getDataFromPreviousFragment()
     }
 
     private fun openCamera() {
@@ -90,7 +88,7 @@ class SkuDetailFragment: Fragment() {
     }
 
     // Similar to onActivityResult
-    private fun getDataFromPreviousFragment(){
+    private fun getDataFromPreviousFragment() {
         val result = findNavController().currentBackStackEntry?.savedStateHandle?.get<String>("data")
         if (!result.isNullOrEmpty())
             showToast(result, TYPE_SUCCESS)
