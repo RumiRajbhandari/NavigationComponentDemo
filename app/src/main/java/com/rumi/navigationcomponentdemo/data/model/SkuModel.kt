@@ -1,4 +1,4 @@
-package com.rumi.navigationcomponentdemo.model
+package com.rumi.navigationcomponentdemo.data.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

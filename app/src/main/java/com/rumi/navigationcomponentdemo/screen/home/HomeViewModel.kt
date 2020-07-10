@@ -6,10 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rumi.navigationcomponentdemo.data.repository.HomeRepository
-import com.rumi.navigationcomponentdemo.model.SkuModel
+import com.rumi.navigationcomponentdemo.data.model.SkuModel
 import com.rumi.navigationcomponentdemo.utils.Response
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class HomeViewModel @ViewModelInject constructor(private val homeRepository: HomeRepository): ViewModel() {
     private val _skus = MutableLiveData<Response<List<SkuModel>>>()

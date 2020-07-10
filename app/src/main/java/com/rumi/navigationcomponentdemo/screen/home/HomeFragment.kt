@@ -14,7 +14,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.rumi.navigationcomponentdemo.R
 import com.rumi.navigationcomponentdemo.databinding.FragmentHomeBinding
-import com.rumi.navigationcomponentdemo.model.SkuModel
+import com.rumi.navigationcomponentdemo.data.model.SkuModel
 import com.rumi.navigationcomponentdemo.utils.Status
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*

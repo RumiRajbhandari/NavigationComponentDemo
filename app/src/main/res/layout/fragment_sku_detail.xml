@@ -70,7 +70,7 @@
 
         <variable
             name="item"
-            type="com.rumi.navigationcomponentdemo.model.SkuModel" />
+            type="com.rumi.navigationcomponentdemo.data.model.SkuModel" />
 
     </data>
 </layout>

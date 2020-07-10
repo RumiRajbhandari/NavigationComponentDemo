@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_sku_detail" >
         <argument
             android:name="sku"
-            app:argType="com.rumi.navigationcomponentdemo.model.SkuModel"
+            app:argType="com.rumi.navigationcomponentdemo.data.model.SkuModel"
             app:nullable="true"
             android:defaultValue="@null"/>
         <action
@@ -35,9 +35,7 @@
 
         <action
             android:id="@+id/action_todayFragment_to_skuDetailFragment"
-            app:destination="@id/skuDetailFragment"
-            app:enterAnim="@anim/popup_context_in"
-            app:exitAnim="@anim/popup_out"/>
+            app:destination="@id/skuDetailFragment"/>
         <action
             android:id="@+id/action_todayFragment_to_login_graph"
             app:destination="@id/login_fragment"
@@ -56,7 +54,7 @@
     <fragment
         android:id="@+id/terms_condition_fragment"
         android:name="com.rumi.navigationcomponentdemo.screen.TermsAndConditionFragment"
-        android:label="LeaveRequestFragment"
+        android:label="Terms and Condition"
         tools:layout="@layout/fragment_terms_and_condition"/>
 
     <fragment
@@ -75,7 +73,7 @@
     </fragment>
     <fragment
         android:id="@+id/cart_fragment"
-        android:name="com.rumi.navigationcomponentdemo.screen.CartFragment"
+        android:name="com.rumi.navigationcomponentdemo.screen.cart.CartFragment"
         android:label="CartFragment"
         tools:layout="@layout/fragment_cart"/>
     <fragment

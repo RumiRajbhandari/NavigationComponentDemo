@@ -3,9 +3,11 @@ package com.rumi.navigationcomponentdemo.di.module
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.rumi.navigationcomponentdemo.BuildConfig
-import com.rumi.navigationcomponentdemo.data.api.ApiService
-import com.rumi.navigationcomponentdemo.data.api.SkuRemote
-import com.rumi.navigationcomponentdemo.data.api.SkuRemoteImpl
+import com.rumi.navigationcomponentdemo.data.remote.ApiService
+import com.rumi.navigationcomponentdemo.data.remote.CartRemote
+import com.rumi.navigationcomponentdemo.data.remote.CartRemoteImpl
+import com.rumi.navigationcomponentdemo.data.remote.SkuRemote
+import com.rumi.navigationcomponentdemo.data.remote.SkuRemoteImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,7 +26,6 @@ class ApplicationModule {
     @Singleton
     fun provideGson(): Gson = GsonBuilder().setLenient().create()
 
-
     @Provides
     fun provideBaseUrl() = BuildConfig.BASE_URL
 
@@ -39,7 +40,6 @@ class ApplicationModule {
     } else OkHttpClient
         .Builder()
         .build()
-
 
     @Provides
     @Singleton
@@ -58,4 +58,7 @@ class ApplicationModule {
     @Singleton
     fun provideSkuRemote(skuRemoteImpl: SkuRemoteImpl): SkuRemote = skuRemoteImpl
 
+    @Provides
+    @Singleton
+    fun provideCartRemote(cartRemoteImpl: CartRemoteImpl): CartRemote = cartRemoteImpl
 }

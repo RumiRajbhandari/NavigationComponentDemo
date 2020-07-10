@@ -1,10 +1,10 @@
-package com.rumi.navigationcomponentdemo.data.api
+package com.rumi.navigationcomponentdemo.data.remote
 
-import com.rumi.navigationcomponentdemo.model.SkuModel
+import com.rumi.navigationcomponentdemo.data.model.SkuModel
 import retrofit2.Response
 import javax.inject.Inject
 
-class SkuRemoteImpl @Inject constructor(private val apiService: ApiService) : SkuRemote {
+class CartRemoteImpl @Inject constructor(private val apiService: ApiService) : CartRemote {
     override suspend fun getSkus(): Response<List<SkuModel>> {
 //        return apiService.getSkus()
         val skuList = mutableListOf<SkuModel>()

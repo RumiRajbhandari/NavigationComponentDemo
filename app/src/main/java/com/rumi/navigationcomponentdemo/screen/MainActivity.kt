@@ -1,13 +1,11 @@
-package com.rumi.navigationcomponentdemo
+package com.rumi.navigationcomponentdemo.screen
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
-import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -18,16 +16,15 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.navigation.NavigationView
+import com.rumi.navigationcomponentdemo.R
 import com.rumi.navigationcomponentdemo.data.SharedPreferenceManager
 import com.rumi.navigationcomponentdemo.databinding.ActivityMainBinding
 import com.rumi.navigationcomponentdemo.databinding.LayoutBadgeBinding
 import com.rumi.navigationcomponentdemo.databinding.NavHeaderMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.layout_badge.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -35,7 +32,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var navController: NavController
     lateinit var binding: ActivityMainBinding
     private val sharedPreference by lazy { SharedPreferenceManager(this) }
-    var notificationsBadge : LayoutBadgeBinding?  = null
+    var notificationsBadge: LayoutBadgeBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +43,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navController = host.navController
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.home_fragment, R.id.cart_fragment, R.id.terms_condition_fragment),
+            setOf(
+                R.id.home_fragment,
+                R.id.cart_fragment,
+                R.id.terms_condition_fragment
+            ),
             binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -54,7 +55,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setupNavigationMenu()
         setUpDestinationChangeListener()
         binding.bottomNavView.setupWithNavController(navController)
-        binding.navView.menu.findItem(R.id.terms_condition_fragment).setActionView(R.layout.item_custom_menu)
 
         val navRootView = binding.navView.getHeaderView(0)
         val navHeaderMainBinding: NavHeaderMainBinding = NavHeaderMainBinding.bind(navRootView)
@@ -62,10 +62,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             handleNightMode()
         }
 
-        addBadge(111.toString())
-
+        addBadge(11.toString())
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return item.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
@@ -128,22 +126,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    private fun addBadge(count : String) {
+    private fun addBadge(count: String) {
         getBadge()
         notificationsBadge?.notificationsBadge?.text = count
         binding.bottomNavView.addView(notificationsBadge?.root)
     }
 
-    private fun getBadge() : LayoutBadgeBinding {
-        if (notificationsBadge != null){
+    private fun getBadge(): LayoutBadgeBinding {
+        if (notificationsBadge != null) {
             return notificationsBadge!!
         }
         val child = binding.bottomNavView.getChildAt(0) as BottomNavigationMenuView
-        notificationsBadge = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.layout_badge, child, false)
+        notificationsBadge = DataBindingUtil.inflate(
+            LayoutInflater.from(this),
+            R.layout.layout_badge, child, false
+        )
         return notificationsBadge!!
     }
 
-    private fun removeBadge(){
+    private fun removeBadge() {
         binding.bottomNavView.removeView(notificationsBadge?.root)
     }
 }
