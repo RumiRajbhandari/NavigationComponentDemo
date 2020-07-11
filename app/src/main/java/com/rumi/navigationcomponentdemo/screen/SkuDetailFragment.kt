@@ -47,6 +47,7 @@ class SkuDetailFragment : Fragment() {
         val sku = safeArgs.sku
         binding.item = sku
         binding.imgSku.transitionName = sku?.id.toString()
+        binding.tvSku.transitionName = ("${sku?.id}_title")
 
         btn_take_pic.setOnClickListener {
             context?.let {
@@ -54,9 +55,6 @@ class SkuDetailFragment : Fragment() {
                     openCamera()
                 }
             }
-        }
-        btn_logout.setOnClickListener {
-            findNavController().navigate(R.id.action_skuDetailFragment_to_loginFragment)
         }
 
         binding.btnBuy.setOnClickListener {

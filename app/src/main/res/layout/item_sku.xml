@@ -30,6 +30,7 @@
             android:layout_marginBottom="8dp"
             android:text="@{item.name}"
             android:textSize="16sp"
+            android:gravity="center_horizontal"
             android:textColor="@color/textColorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

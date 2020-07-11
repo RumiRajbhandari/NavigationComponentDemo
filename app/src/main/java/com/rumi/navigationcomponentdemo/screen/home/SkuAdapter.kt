@@ -1,6 +1,7 @@
 package com.rumi.navigationcomponentdemo.screen.home
 
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.ViewDataBinding
 import com.rosia.base.BaseAdapter
 import com.rumi.navigationcomponentdemo.R
@@ -10,7 +11,7 @@ import com.rumi.navigationcomponentdemo.databinding.ItemSkuBinding
 
 class SkuAdapter(
     private var dataList: List<SkuModel>,
-    private val onItemClicked: (SkuModel, ImageView) -> Unit
+    private val onItemClicked: (SkuModel, ImageView, TextView) -> Unit
 
 ) : BaseAdapter<SkuModel, SkuAdapter.SkuViewHolder>() {
 
@@ -36,9 +37,9 @@ class SkuAdapter(
         override fun bindView(item: SkuModel) {
             super.bindView(item)
             if (binding is ItemSkuBinding) {
-                val binding = binding as ItemSkuBinding
                 binding.imgSku.transitionName = item.id.toString()
-                binding.container.setOnClickListener { onItemClicked(item, binding.imgSku) }
+                binding.tvSku.transitionName = ("${item.id}_title")
+                binding.container.setOnClickListener { onItemClicked(item, binding.imgSku, binding.tvSku) }
             }
         }
     }

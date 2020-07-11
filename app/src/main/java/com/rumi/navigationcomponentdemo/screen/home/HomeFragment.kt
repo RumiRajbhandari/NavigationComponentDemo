@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        if (::binding.isInitialized) return  binding.root
+        if (::binding.isInitialized) return binding.root
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_home, container, false
@@ -46,13 +46,14 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecyclerView()
+        if (adapter == null) initRecyclerView()
     }
 
     private fun initRecyclerView() {
-        adapter = SkuAdapter(skuList, onItemClicked = { sku, imageView ->
+        adapter = SkuAdapter(skuList, onItemClicked = { sku, imageView, textView ->
             val extras = FragmentNavigatorExtras(
-                imageView to sku.id.toString()
+                imageView to sku.id.toString(),
+                textView to "${sku.id}_title"
             )
             val action =
                 HomeFragmentDirections.actionTodayFragmentToSkuDetailFragment(
